@@ -8,34 +8,27 @@ void setup()
   loadExcavations();
 }
 
-ArrayList<ArrayList<Float>> counties = new ArrayList<ArrayList<Float>>();
-
 void loadExcavations()
 {
-  // instantiate airportData container
+  // instantiate excavations container
   ArrayList<ArrayList<Float>> excavations = new ArrayList<ArrayList<Float>>();
+  ArrayList<Float> v = new ArrayList<Float>(); 
   String[] lines = loadStrings("Excavations.csv");
-  int i = 0;
   for (String s : lines)
   {
     // declare and instantiate list for this line
-    ArrayList<Float> v = new ArrayList<Float>();
-    ArrayList<Float> county = new ArrayList<Float>();
+    v = new ArrayList<Float>();
     String[] values = s.split(",");
     // we start at 1 to skip the first value (the year)
-    for (int j = 1; j<values.length ; j++) 
+    for (int j = 0; j<values.length ; j++) 
     {
       float f = Float.parseFloat(values[j]);
       // fill this (small) list 
-      v.add(f);
+        v.add(f);
     }
     // add the small list to the main one
-    //println(v.get(1));
-    county.add(v.get(0));
-    println(county.get(0));
     excavations.add(v);
-    i++;
   }
   // advantage of ArrayList: we can print them directly!
-  //println(county.get(0));
+  println(excavations.get(1));
 }
