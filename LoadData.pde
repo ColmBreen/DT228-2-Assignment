@@ -33,5 +33,6 @@ class LoadData
       // add the small list to the main one
       excavations.add(v);
     }
+    println(excavations.get(2));
   }
 }
