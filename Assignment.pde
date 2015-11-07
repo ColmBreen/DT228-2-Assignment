@@ -4,12 +4,20 @@ void setup()
   textAlign(CENTER);
   
   loading = new LoadData();
-  loadData();
+  calculating = new Totals();
+  //loadData();
+  Totals();
 }
 
 LoadData loading;
+Totals calculating;
 
 void loadData()
 {
   loading.loadExcavations();
+}
+
+void Totals()
+{
+  calculating.loadTotals();
 }
