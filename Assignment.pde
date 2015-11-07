@@ -5,7 +5,7 @@ void setup()
   
   loading = new LoadData();
   calculating = new Totals();
-  //loadData();
+  loadData();
   Totals();
 }
 
