@@ -5,10 +5,13 @@ void setup()
   
   loading = new LoadData();
   calculating = new Totals();
+  drawing = new DrawAxis();
   loadData();
   Totals();
+  drawAxis();
 }
 
+DrawAxis drawing;
 LoadData loading;
 Totals calculating;
 
@@ -20,4 +23,9 @@ void loadData()
 void Totals()
 {
   calculating.loadTotals();
+}
+
+void drawAxis()
+{
+  drawing.drawing();
 }
