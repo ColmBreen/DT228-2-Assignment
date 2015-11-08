@@ -2,23 +2,28 @@ class Totals
 {
   void loadTotals()
   {
-      Float countyTotal = 0.0;
-      ArrayList<Float> countyTotals = new ArrayList<Float>();
-      ArrayList<Float> v = new ArrayList<Float>(); 
-      String[] lines = loadStrings("Excavations.csv");
-      for (String s : lines)
+    int i = 0, j;
+    float countyTotal = 0.0;
+    float[] yearTotals = new float[25];
+    ArrayList<Float> countyTotals = new ArrayList<Float>();
+    String[] lines = loadStrings("Excavations.csv");
+    for (String s : lines)
+    {
+      countyTotal = 0.0;
+      String[] values = s.split(",");
+      for(j = 0; j<values.length ; j++) 
       {
-        countyTotal = 0.0;
-        v = new ArrayList<Float>();
-        String[] values = s.split(",");
-        for (int j = 0; j<values.length ; j++) 
+        float f = Float.parseFloat(values[j]);
+        if(i == 33)
         {
-          float f = Float.parseFloat(values[j]);
-          countyTotal = countyTotal + f;
-          v.add(f);
+          yearTotals[j] = f;
         }
-        countyTotals.add(countyTotal);
-      }
-      println(countyTotals.get(2));
+        countyTotal = countyTotal + f;
+      }  
+      countyTotals.add(countyTotal);
+      i++;
+    }
+    println(countyTotals.get(1));
+    println(yearTotals[0]);
   }
 }

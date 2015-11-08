@@ -18,7 +18,6 @@ class LoadData
       // declare and instantiate list for this line
       v = new ArrayList<Float>();
       String[] values = s.split(",");
-      // we start at 1 to skip the first value (the year)
       for (int j = 0; j<values.length ; j++) 
       {
         float f = Float.parseFloat(values[j]);
@@ -28,6 +27,6 @@ class LoadData
       // add the small list to the main one
       excavations.add(v);
     }
-    println(excavations.get(2));
+    println(excavations.get(1));
   }
 }
