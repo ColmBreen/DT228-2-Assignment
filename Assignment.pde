@@ -8,13 +8,13 @@ void setup()
   
   loading = new LoadData();
   calculating = new Totals();
-  drawing = new DrawAxis();
+  drawing = new DrawGraph();
   loadData();
   Totals();
-  drawAxis();
+  drawGraph();
 }
 
-DrawAxis drawing;
+DrawGraph drawing;
 LoadData loading;
 Totals calculating;
 
@@ -28,7 +28,8 @@ void Totals()
   calculating.loadTotals();
 }
 
-void drawAxis()
+void drawGraph()
 {
   drawing.drawing();
+  drawing.drawingBars();
 }

@@ -1,4 +1,4 @@
-class DrawAxis
+class DrawGraph
 {
   float xAxisM;
   float yAxisM;
@@ -8,7 +8,7 @@ class DrawAxis
   String[] years = {"1990-1994", "1995-1999", "2000-2004", "2005-2009", "2010-2014"};
   int i;
   
-  DrawAxis()
+  DrawGraph()
   {
     i = 0;
     xAxisM = (width/9);
@@ -37,6 +37,9 @@ class DrawAxis
       text((i*200), xAxisM-(xAxisM/1.3), yAxisM-((yAxis*i)-5)); 
     }
   }
-    
+
+  void drawingBars()
+  {
+  }
 }
 
