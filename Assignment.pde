@@ -1,7 +1,10 @@
 void setup()
 {
   size(500, 500);
-  textAlign(CENTER);
+  //textAlign(CENTER);
+  background(255);
+  stroke(0);
+  fill(0);
   
   loading = new LoadData();
   calculating = new Totals();

@@ -34,6 +34,6 @@ class Totals
       i++;
     }
     println(countyTotals.get(1));
-    println(yearTotals[16]);
+    println(yearTotals[0]);
   }
 }
