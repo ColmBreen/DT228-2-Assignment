@@ -31,5 +31,5 @@ void Totals()
 void drawGraph()
 {
   drawing.drawing();
-  drawing.drawingBars();
+  drawing.drawingBars(calculating.max, calculating.yearTotals, calculating.fiveYearTotals, calculating.countyTotals);
 }
