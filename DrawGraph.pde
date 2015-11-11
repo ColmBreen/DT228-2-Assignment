@@ -1,6 +1,5 @@
 class DrawGraph
 {
-  Totals calculating;
   float xAxisM;
   float yAxisM;
   float xAxis;
@@ -11,7 +10,6 @@ class DrawGraph
   
   DrawGraph()
   {
-    calculating = new Totals();
     i = 0;
     xAxisM = (width/9);
     yAxisM = (height/19) * 18;
@@ -42,12 +40,27 @@ class DrawGraph
 
   void drawingBars(float max, float[] yearTotals, float[] fiveYearTotals, ArrayList<Float> countyTotals)
   {
+    float scale;
     for(int i = 0; i < 5; i++)
     {
-      fill(random(255), random(255), random(255));
-      float scale = map(fiveYearTotals[i], 0, 8500, yAxisM, yAxis)
-      rect(xAxisM+(xLineLength*i), scale, xLineLength, (yAxisM - scale));
+      fill(127);
+      scale = map(fiveYearTotals[i], 0, 8500, yAxisM, yAxis);
+      rect(xAxisM+(xLineLength*i), scale, xLineLength, (yAxisM - scale));     
     }
-  }
+    if(mousePressed)
+    {
+      for(int i = 0; i < 5; i++)
+      {
+        int j = 4;
+        scale = map(fiveYearTotals[i], 0, 8500, yAxisM, yAxis);
+        rect(xAxisM+(xLineLength*i), scale, xLineLength, (yAxisM - scale)); 
+        if(mouseX >= (xAxisM+(xLineLength*i)) && mouseX <= (xAxis-(xLineLength*j)) && mouseY <= yAxisM && mouseY >= scale)
+        {
+          fill(0);
+        }
+        j--;
+      }
+    }
+  }  
 }
 
