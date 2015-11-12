@@ -1,5 +1,6 @@
 class DrawGraph
 {
+  boolean check;
   float xAxisM;
   float yAxisM;
   float xAxis;
@@ -41,25 +42,30 @@ class DrawGraph
   void drawingBars(float max, float[] yearTotals, float[] fiveYearTotals, ArrayList<Float> countyTotals)
   {
     float scale;
-    for(int i = 0; i < 5; i++)
-    {
-      fill(127);
-      scale = map(fiveYearTotals[i], 0, 8500, yAxisM, yAxis);
-      rect(xAxisM+(xLineLength*i), scale, xLineLength, (yAxisM - scale));     
-    }
     if(mousePressed)
     {
       for(int i = 0; i < 5; i++)
       {
-        int j = 4;
         scale = map(fiveYearTotals[i], 0, 8500, yAxisM, yAxis);
         rect(xAxisM+(xLineLength*i), scale, xLineLength, (yAxisM - scale)); 
-        if(mouseX >= (xAxisM+(xLineLength*i)) && mouseX <= (xAxis-(xLineLength*j)) && mouseY <= yAxisM && mouseY >= scale)
+        if(mouseX >= (xAxisM+(xLineLength*i)) && mouseX <= (xAxisM+(xLineLength*(i+1))) && mouseY <= yAxisM && mouseY >= scale)
         {
-          fill(0);
+          check = !check;
         }
-        j--;
       }
+    }
+    for(int i = 0; i < 5; i++)
+    {
+      if(check)
+      {
+        fill(50);
+      }
+      else
+      {
+        fill(127);
+      }
+      scale = map(fiveYearTotals[i], 0, 8500, yAxisM, yAxis);
+      rect(xAxisM+(xLineLength*i), scale, xLineLength, (yAxisM - scale));     
     }
   }  
 }

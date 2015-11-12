@@ -4,7 +4,7 @@ void setup()
   //textAlign(CENTER);
   background(255);
   stroke(0);
-  fill(0);
+  fill(127);
   
   loading = new LoadData();
   calculating = new Totals();
