@@ -45,7 +45,7 @@ class DrawGraph
     for(int i = 0; i < 5; i++)
     {
       fill(random(255), random(255), random(255));
-      float scale = map(fiveYearTotals[i], 0, 8500, yAxisM, yAxis)
+      float scale = map(fiveYearTotals[i], 0, 8500, yAxisM, yAxis);
       rect(xAxisM+(xLineLength*i), scale, xLineLength, (yAxisM - scale));
     }
   }
