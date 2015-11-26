@@ -30,8 +30,7 @@ void Totals()
 
 void drawGraph()
 {
-  drawing.drawing();
-}
+  drawing.drawing();}
 
 void draw()
 {

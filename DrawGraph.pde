@@ -1,6 +1,6 @@
 class DrawGraph
 {
-  boolean check;
+  boolean[] check = new boolean[5];
   float xAxisM;
   float yAxisM;
   float xAxis;
@@ -50,13 +50,13 @@ class DrawGraph
         rect(xAxisM+(xLineLength*i), scale, xLineLength, (yAxisM - scale)); 
         if(mouseX >= (xAxisM+(xLineLength*i)) && mouseX <= (xAxisM+(xLineLength*(i+1))) && mouseY <= yAxisM && mouseY >= scale)
         {
-          check = !check;
+          check[i] = !check[i];
         }
       }
     }
     for(int i = 0; i < 5; i++)
     {
-      if(check)
+      if(check[i])
       {
         fill(50);
       }
