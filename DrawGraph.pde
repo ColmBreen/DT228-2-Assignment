@@ -1,6 +1,7 @@
 class DrawGraph
 {
   boolean[] check = new boolean[5];
+  int graph = 0;
   float xAxisM;
   float yAxisM;
   float xAxis;
@@ -47,10 +48,10 @@ class DrawGraph
       for(int i = 0; i < 5; i++)
       {
         scale = map(fiveYearTotals[i], 0, 8500, yAxisM, yAxis);
-        rect(xAxisM+(xLineLength*i), scale, xLineLength, (yAxisM - scale)); 
         if(mouseX >= (xAxisM+(xLineLength*i)) && mouseX <= (xAxisM+(xLineLength*(i+1))) && mouseY <= yAxisM && mouseY >= scale)
         {
-          check[i] = !check[i];
+          graph = i+1;
+          println(graph);
         }
       }
     }
