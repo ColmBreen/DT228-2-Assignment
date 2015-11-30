@@ -8,7 +8,10 @@ class DrawGraph
   float yAxis;
   float xLineLength;
   String[] years = {"1990-1994", "1995-1999", "2000-2004", "2005-2009", "2010-2014"};
-  int i;
+  String[] sYears = {"1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", 
+  "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", 
+  "2009", "2010", "2011", "2012", "2013", "2014"}; 
+  int i, j;
   
   DrawGraph()
   {
@@ -23,12 +26,24 @@ class DrawGraph
   void drawing()
   {
     line(xAxisM, yAxisM, xAxis, yAxisM);
+    j = 5 * (graph-1);
     for(i = 0; i < 6; i++)
     {
       line(xAxisM+(xLineLength*i), yAxisM, xAxisM+(xLineLength*i), yAxis * 18.5);
-      if(i < 5)
+      if(graph == 0)
       {
-        text(years[i], xAxisM+(xLineLength*i+10), yAxis * 18.5);
+        if(i < 5)
+        {
+          text(years[i], xAxisM+(xLineLength*i+10), yAxis * 18.5);
+        }
+      }
+      else
+      {
+        if(j < 5*graph)
+        {
+          text(sYears[j], xAxisM+(xLineLength*i+10), yAxis * 18.5);
+        }
+        j++;
       }
     }
     
@@ -43,7 +58,6 @@ class DrawGraph
   void drawingBars(float max, float[] yearTotals, float[] fiveYearTotals, ArrayList<Float> countyTotals)
   {
     float scale;
-    int i, j;
     if(mousePressed)
     {
       for(i = 0; i < 5; i++)
@@ -55,11 +69,14 @@ class DrawGraph
         }
       }
     }
-    for(i = 0; i < 5; i++)
+    if(graph == 0)
     {
-      fill(127);
-      scale = map(fiveYearTotals[i], 0, 8500, yAxisM, yAxis);
-      rect(xAxisM+(xLineLength*i), scale, xLineLength, (yAxisM - scale));     
+      for(i = 0; i < 5; i++)
+      {
+        fill(127);
+        scale = map(fiveYearTotals[i], 0, 8500, yAxisM, yAxis);
+        rect(xAxisM+(xLineLength*i), scale, xLineLength, (yAxisM - scale));     
+      }
     }
     switch(graph)
     {
