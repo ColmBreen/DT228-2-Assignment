@@ -11,7 +11,6 @@ void setup()
   drawing = new DrawGraph();
   loadData();
   Totals();
-  drawGraph();
 }
 
 DrawGraph drawing;
@@ -27,10 +26,6 @@ void Totals()
 {
   calculating.loadTotals();
 }
-
-void drawGraph()
-{
-  drawing.drawing();}
 
 void draw()
 {

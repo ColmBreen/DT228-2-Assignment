@@ -43,9 +43,10 @@ class DrawGraph
   void drawingBars(float max, float[] yearTotals, float[] fiveYearTotals, ArrayList<Float> countyTotals)
   {
     float scale;
+    int i, j;
     if(mousePressed)
     {
-      for(int i = 0; i < 5; i++)
+      for(i = 0; i < 5; i++)
       {
         scale = map(fiveYearTotals[i], 0, 8500, yAxisM, yAxis);
         if(mouseX >= (xAxisM+(xLineLength*i)) && mouseX <= (xAxisM+(xLineLength*(i+1))) && mouseY <= yAxisM && mouseY >= scale)
@@ -54,7 +55,7 @@ class DrawGraph
         }
       }
     }
-    for(int i = 0; i < 5; i++)
+    for(i = 0; i < 5; i++)
     {
       fill(127);
       scale = map(fiveYearTotals[i], 0, 8500, yAxisM, yAxis);
@@ -63,47 +64,62 @@ class DrawGraph
     switch(graph)
     {
       case 1:
-        for(int i = 0; i < 5; i++)
+        background(255);
+        j = 0;
+        for(i = 0; i < 5; i++)
         {
           fill(127);
           scale = map(yearTotals[i], 0, 2500, yAxisM, yAxis);
-          rect(xAxisM+(xLineLength*i), scale, xLineLength, (yAxisM - scale));     
+          rect(xAxisM+(xLineLength*j), scale, xLineLength, (yAxisM - scale));
+          j++;     
         }
         break;
       case 2:
-        for(int i = 0; i < 5; i++)
+        background(255);
+        j = 0;
+        for(i = 5; i < 10; i++)
         {
           fill(127);
-          scale = map(fiveYearTotals[i], 0, 8500, yAxisM, yAxis);
-          rect(xAxisM+(xLineLength*i), scale, xLineLength, (yAxisM - scale));     
+          scale = map(yearTotals[i], 0, 2500, yAxisM, yAxis);
+          rect(xAxisM+(xLineLength*j), scale, xLineLength, (yAxisM - scale));
+          j++;    
         }
         break;
       case 3:
-        for(int i = 0; i < 5; i++)
+        background(255);
+        j = 0;
+        for(i = 10; i < 15; i++)
         {
           fill(127);
-          scale = map(fiveYearTotals[i], 0, 8500, yAxisM, yAxis);
-          rect(xAxisM+(xLineLength*i), scale, xLineLength, (yAxisM - scale));
+          scale = map(yearTotals[i], 0, 2500, yAxisM, yAxis);
+          rect(xAxisM+(xLineLength*j), scale, xLineLength, (yAxisM - scale));
+          j++;
         }
         break;
       case 4:
-        for(int i = 0; i < 5; i++)
+        background(255);
+        j = 0;
+        for(i = 15; i < 20; i++)
         {
           fill(127);
-          scale = map(fiveYearTotals[i], 0, 8500, yAxisM, yAxis);
-          rect(xAxisM+(xLineLength*i), scale, xLineLength, (yAxisM - scale));
+          scale = map(yearTotals[i], 0, 2500, yAxisM, yAxis);
+          rect(xAxisM+(xLineLength*j), scale, xLineLength, (yAxisM - scale));
+          j++;
         }
         break;
       case 5:
-        for(int i = 0; i < 5; i++)
+        background(255);
+        j = 0;
+        for(i = 20; i < 25; i++)
         {
           fill(127);
-          scale = map(fiveYearTotals[i], 0, 8500, yAxisM, yAxis);
-          rect(xAxisM+(xLineLength*i), scale, xLineLength, (yAxisM - scale));
+          scale = map(yearTotals[i], 0, 2500, yAxisM, yAxis);
+          rect(xAxisM+(xLineLength*j), scale, xLineLength, (yAxisM - scale));
+          j++;
         }
         break;
     }
-        
+    drawing();       
   }  
 }
 
