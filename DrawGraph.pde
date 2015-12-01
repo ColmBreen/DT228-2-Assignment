@@ -36,6 +36,7 @@ class DrawGraph
         textSize(11);
         if(i < 5)
         {
+          fill(0);
           text(years[i], xAxisM+(xLineLength*i+10), yAxis * 18.5);
         }
       }
@@ -44,6 +45,7 @@ class DrawGraph
         textSize(11);
         if(j < 5*graph)
         {
+          fill(0);
           text(sYears[j], xAxisM+(xLineLength*i+10), yAxis * 18.5);
         }
         j++;
@@ -73,6 +75,7 @@ class DrawGraph
     if(graph == 0)
     {
       background(255);
+      fill(0);
       textSize(15);
       text("1990 - 2014", width/2.1, 20);
       for(i = 0; i < 5; i++)
@@ -100,6 +103,7 @@ class DrawGraph
         case 1:
           background(255);
           j = 0;
+          fill(0);
           textSize(15);
           text("1990 - 1994", width/2.1, 20);
           for(i = 0; i < 5; i++)
@@ -113,6 +117,7 @@ class DrawGraph
         case 2:
           background(255);
           j = 0;
+          fill(0);
           textSize(15);
           text("1995 - 1999", width/2.1, 20);
           for(i = 5; i < 10; i++)
@@ -126,6 +131,7 @@ class DrawGraph
         case 3:
           background(255);
           j = 0;
+          fill(0);
           textSize(15);
           text("2000 - 2004", width/2.1, 20);
           for(i = 10; i < 15; i++)
@@ -139,6 +145,7 @@ class DrawGraph
         case 4:
           background(255);
           j = 0;
+          fill(0);
           textSize(15);
           text("2005 - 2009", width/2.1, 20);
           for(i = 15; i < 20; i++)
@@ -152,6 +159,7 @@ class DrawGraph
         case 5:
           background(255);
           j = 0;
+          fill(0);
           textSize(15);
           text("2010 - 2014", width/2.1, 20);
           for(i = 20; i < 25; i++)
@@ -165,10 +173,11 @@ class DrawGraph
       }
     }
     drawing();
+    fill(0, 0, 255);
     text("Back", 15, 15); 
     if(mousePressed)
     {
-      if(mouseX > 10 && mouseX < 20 && mouseY > 10 && mouseY < 20)
+      if(mouseX > 5 && mouseX < 40 && mouseY > 5 && mouseY < 20)
       {
         graph = 0;
       }
