@@ -13,6 +13,8 @@ void setup()
   Totals();
 }
 
+int menu = 0;
+
 DrawGraph drawing;
 LoadData loading;
 Totals calculating;
@@ -29,5 +31,67 @@ void Totals()
 
 void draw()
 {
-  drawing.drawingBars(calculating.max, calculating.yearTotals, calculating.fiveYearTotals, calculating.countyTotals);
+  if(menu == 0)
+  {
+    background(0);
+    rectMode(CENTER);
+    stroke(255);
+    noFill();
+    rect(width/2, height/2, 400, 400);
+    fill(255);
+    rect(width/2, height/2, 200, 60);
+    textSize(20);
+    textAlign(CENTER);
+    text("Archaeological Excavations in Ireland", width/2, height/6);
+    text("1990 - 2014", width/2, (height/6)+25);
+    textSize(15);
+    text("Each bar in the bar charts can be clicked", width/2, (width/6)+75);
+    text("to reveal the data which the bar represents", width/2, (width/6)+95);
+    fill(0);
+    text("Click here to begin", width/2, height/2);
+  }
+  else
+  {
+    textAlign(BASELINE);
+    rectMode(CORNER);
+    drawing.drawingBars(calculating.max, calculating.yearTotals, calculating.fiveYearTotals, calculating.countyTotals);
+  }
+}
+
+void mouseClicked()
+{
+  
+  if(drawing.graph == 0 && menu != 0)
+  {
+    for(int i = 0; i < 5; i++)
+    {
+      float scale = map(calculating.fiveYearTotals[i], 0, 8500, drawing.yAxisM, drawing.yAxis);
+      if(mouseX >= (drawing.xAxisM+(drawing.xLineLength*i)) && mouseX <= (drawing.xAxisM+(drawing.xLineLength*(i+1))) && mouseY <= drawing.yAxisM && mouseY >= scale)
+      {
+        drawing.graph = i+1;
+      }
+    }
+  }
+  else if(menu != 0)
+  {
+    for(int i = 0; i < 6; i++)
+    {
+      if(drawing.graph == i+1)
+      {
+        int j = 5*(drawing.graph-1);
+        for(int k = 0; k < 5; k++)
+        {
+          float scale = map(calculating.yearTotals[j], 0, 2550, drawing.yAxisM, drawing.yAxis);
+          if(mouseX >= (drawing.xAxisM+(drawing.xLineLength*k)) && mouseX <= (drawing.xAxisM+(drawing.xLineLength*(k+1))) && mouseY <= drawing.yAxisM && mouseY >= scale)
+          {
+            drawing.drawWordle(k);
+            break;
+          }
+          j++;
+        }
+      }
+    }
+  }
+  
+  menu = 1;
 }
