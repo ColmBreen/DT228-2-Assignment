@@ -84,7 +84,7 @@ void mouseClicked()
           float scale = map(calculating.yearTotals[j], 0, 2550, drawing.yAxisM, drawing.yAxis);
           if(mouseX >= (drawing.xAxisM+(drawing.xLineLength*k)) && mouseX <= (drawing.xAxisM+(drawing.xLineLength*(k+1))) && mouseY <= drawing.yAxisM && mouseY >= scale)
           {
-            drawing.drawWordle(k);
+            drawing.drawWordle(loading.counties);
             break;
           }
           j++;

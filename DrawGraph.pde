@@ -173,8 +173,11 @@ class DrawGraph
     }    
   }
 
-  void drawWordle(int num)
+  void drawWordle(String[] counties)
   {
-    println(num+1);
+    for(int i = 0; i < counties.length; i++)
+    {
+      println(counties[i]);
+    }
   }
 }
