@@ -54,7 +54,7 @@ void draw()
   {
     textAlign(BASELINE);
     rectMode(CORNER);
-    drawing.drawingBars(calculating.max, calculating.yearTotals, calculating.fiveYearTotals, calculating.countyTotals);
+    drawing.drawingBars(calculating.yearTotals, calculating.fiveYearTotals);
   }
 }
 
@@ -84,7 +84,7 @@ void mouseClicked()
           float scale = map(calculating.yearTotals[j], 0, 2550, drawing.yAxisM, drawing.yAxis);
           if(mouseX >= (drawing.xAxisM+(drawing.xLineLength*k)) && mouseX <= (drawing.xAxisM+(drawing.xLineLength*(k+1))) && mouseY <= drawing.yAxisM && mouseY >= scale)
           {
-            drawing.drawWordle(loading.counties);
+            drawing.drawWordle(loading.counties, calculating.countyTotals);
             break;
           }
           j++;
@@ -92,6 +92,5 @@ void mouseClicked()
       }
     }
   }
-  
   menu = 1;
 }
