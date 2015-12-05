@@ -28,46 +28,46 @@ class DrawGraph
     if(wordle == 0)
     {
       line(xAxisM, yAxisM, xAxis, yAxisM);
-        j = 5 * (graph-1);
-        for(i = 0; i < 6; i++)
-        {
-          line(xAxisM+(xLineLength*i), yAxisM, xAxisM+(xLineLength*i), yAxis * 18.5);
-          if(graph == 0)
-          {
-            textSize(11);
-            if(i < 5)
-            {
-              fill(0);
-              text(years[i], xAxisM+(xLineLength*i+10), yAxis * 18.5);
-            }
-          }
-          else
-          {
-            textSize(11);
-            if(j < 5*graph)
-            {
-              fill(0);
-              text(sYears[j], xAxisM+(xLineLength*i+10), yAxis * 18.5);
-            }
-            j++;
-          }
-        }
-        textSize(11);
+      j = 5 * (graph-1);
+      for(i = 0; i < 6; i++)
+      {
+        line(xAxisM+(xLineLength*i), yAxisM, xAxisM+(xLineLength*i), yAxis * 18.5);
         if(graph == 0)
         {
-          size = 500;
+          textSize(11);
+          if(i < 5)
+          {
+            fill(0);
+            text(years[i], xAxisM+(xLineLength*i+10), yAxis * 18.5);
+          }
         }
-        else if(graph < 6)
+        else
         {
-          size = 150;
-        }  
-        line(xAxisM, yAxisM, xAxisM, yAxis);
-        for(i = 0; i < 18; i++)
-        {
-          line(xAxisM, yAxisM-(yAxis*i), xAxisM-(xAxisM/4), yAxisM-(yAxis*i));
-          fill(0);
-          text((i*size), xAxisM-(xAxisM/1.3), yAxisM-((yAxis*i)-5)); 
+          textSize(11);
+          if(j < 5*graph)
+          {
+            fill(0);
+            text(sYears[j], xAxisM+(xLineLength*i+10), yAxis * 18.5);
+          }
+          j++;
         }
+      }
+      textSize(11);
+      if(graph == 0)
+      {
+        size = 500;
+      }
+      else if(graph < 6)
+      {
+        size = 150;
+      }  
+      line(xAxisM, yAxisM, xAxisM, yAxis);
+      for(i = 0; i < 18; i++)
+      {
+        line(xAxisM, yAxisM-(yAxis*i), xAxisM-(xAxisM/4), yAxisM-(yAxis*i));
+        fill(0);
+        text((i*size), xAxisM-(xAxisM/1.3), yAxisM-((yAxis*i)-5)); 
+      }
     }
   }
 
@@ -166,12 +166,14 @@ class DrawGraph
     }
     drawing();
     fill(127, 0, 0);
+    textSize(15);
     text("Back", 15, 15); 
     if(mousePressed)
     {
       if(mouseX > 5 && mouseX < 40 && mouseY > 5 && mouseY < 20)
       {
         graph = 0;
+        wordle = 0;
       }
     }    
   }
@@ -179,15 +181,19 @@ class DrawGraph
   void drawWordle(String[] counties, ArrayList<Float> countyTotals)
   {
     background(255);
-    int i, j;
+    int i;
+    float ranWidth, ranHeight, textSize;
     for(i = 0; i < counties.length; i++)
     {
-      for(j = 0; j < counties.length; j++)
-      {
-        fill(random(255), random(255), random(255));
-        textSize(countyTotals.get(j) + 1);
-        text(counties[j], random(width), random(height));
-      }
+      fill(random(255), 0, 0);
+      textSize = (((countyTotals.get(i))+100)/5);
+      textSize(textSize);
+      ranWidth = random(0, width-100);
+      ranHeight = random(50, height-100);
+      text(counties[i], ranWidth, ranHeight);
+      noFill();
+      println(counties[i].length());
+      rect(ranWidth, (ranHeight - textSize), textWidth(counties[i]), textSize); 
     }
     wordle = 1;
   }

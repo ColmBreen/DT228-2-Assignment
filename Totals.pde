@@ -29,7 +29,6 @@ class Totals
       {
         if(k > 24 && k < 825)
         {
-          println(values[j]);
           countyTotal = Float.parseFloat(values[j]);
           countyTotals.add(countyTotal); 
         }
