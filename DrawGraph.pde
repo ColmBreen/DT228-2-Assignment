@@ -178,22 +178,40 @@ class DrawGraph
     }    
   }
 
-  void drawWordle(String[] counties, ArrayList<Float> countyTotals)
+  void drawWordle(String[] counties, ArrayList<Float> countyTotals, int jGraph)
   {
     background(255);
-    int i;
+    println(jGraph);
+    int i, j;
     float ranWidth, ranHeight, textSize;
+    float[] prevWidth = new float[32];
+    float[] prevHeight = new float[32];
+    float[] prevSize = new float[32];
     for(i = 0; i < counties.length; i++)
     {
       fill(random(255), 0, 0);
       textSize = (((countyTotals.get(i))+100)/5);
       textSize(textSize);
       ranWidth = random(0, width-100);
-      ranHeight = random(50, height-100);
+      for(j = 0; j < i+1; j++)
+      {
+        if(ranWidth >= prevWidth[j] && ranWidth <= prevWidth[j] + prevSize[j])
+        {
+          ranWidth = random(0, width-100);
+        }
+      }
+      prevWidth[i] = ranWidth;
+      ranHeight = height - (textSize * 10);
+      //for(j = 0; j < i + 1; j++)
+      //{
+      //  if(ranHeight >= prevHeight[j] && ranHeight <= prevHeight[j] + 100)
+      //  {
+      //    ranHeight = random(0, height-100);
+      //  }
+      //}
+      prevHeight[i] = ranHeight;
+      prevSize[i] = textWidth(counties[i]); 
       text(counties[i], ranWidth, ranHeight);
-      noFill();
-      println(counties[i].length());
-      rect(ranWidth, (ranHeight - textSize), textWidth(counties[i]), textSize); 
     }
     wordle = 1;
   }
