@@ -181,7 +181,6 @@ class DrawGraph
   void drawWordle(String[] counties, ArrayList<Float> countyTotals, int jGraph)
   {
     background(255);
-    println(jGraph);
     int i, j;
     float ranWidth, ranHeight, textSize;
     float[] prevWidth = new float[32];
@@ -190,25 +189,18 @@ class DrawGraph
     for(i = 0; i < counties.length; i++)
     {
       fill(random(255), 0, 0);
-      textSize = (((countyTotals.get(i))+100)/5);
+      textSize = (((countyTotals.get(jGraph + (25*i))+100)/5));
       textSize(textSize);
-      ranWidth = random(0, width-100);
+      ranWidth = random(0, width-200);
       for(j = 0; j < i+1; j++)
       {
         if(ranWidth >= prevWidth[j] && ranWidth <= prevWidth[j] + prevSize[j])
         {
-          ranWidth = random(0, width-100);
+          ranWidth = random(0, width-200);
         }
       }
       prevWidth[i] = ranWidth;
-      ranHeight = height - (textSize * 10);
-      //for(j = 0; j < i + 1; j++)
-      //{
-      //  if(ranHeight >= prevHeight[j] && ranHeight <= prevHeight[j] + 100)
-      //  {
-      //    ranHeight = random(0, height-100);
-      //  }
-      //}
+      ranHeight = map(countyTotals.get(jGraph + (25*i)), 0, 250, height, 0);
       prevHeight[i] = ranHeight;
       prevSize[i] = textWidth(counties[i]); 
       text(counties[i], ranWidth, ranHeight);
