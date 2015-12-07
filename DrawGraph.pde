@@ -25,6 +25,7 @@ class DrawGraph
   
   void drawing()
   {
+    //If the wordle has not been displayed, Axis will be drawn
     if(wordle == 0)
     {
       line(xAxisM, yAxisM, xAxis, yAxisM);
@@ -34,6 +35,7 @@ class DrawGraph
         line(xAxisM+(xLineLength*i), yAxisM, xAxisM+(xLineLength*i), yAxis * 18.5);
         if(graph == 0)
         {
+          //displays the first axis
           textSize(11);
           if(i < 5)
           {
@@ -43,6 +45,7 @@ class DrawGraph
         }
         else
         {
+          //displays the second axis
           textSize(11);
           if(j < 5*graph)
           {
@@ -64,6 +67,7 @@ class DrawGraph
       line(xAxisM, yAxisM, xAxisM, yAxis);
       for(i = 0; i < 18; i++)
       {
+        //Draws the y-axis lines
         line(xAxisM, yAxisM-(yAxis*i), xAxisM-(xAxisM/4), yAxisM-(yAxis*i));
         fill(0);
         text((i*size), xAxisM-(xAxisM/1.3), yAxisM-((yAxis*i)-5)); 
@@ -84,6 +88,7 @@ class DrawGraph
       text("1990 - 2014", width/2.1, 20);
       for(i = 0; i < 5; i++)
       {
+        //Draws the bars for the first bar chart
         fill(127, 127, 255);
         scale = map(fiveYearTotals[i], 0, 8500, yAxisM, yAxis);
         rect(xAxisM+(xLineLength*i), scale, xLineLength, (yAxisM - scale));     
@@ -93,6 +98,7 @@ class DrawGraph
     {
       switch(graph)
       {
+        //Draws the bar charts for the each of the second bar charts
         case 1:
           background(255);
           j = 0;
@@ -169,6 +175,7 @@ class DrawGraph
     fill(127, 0, 0);
     textSize(15);
     text("Back", 15, 15); 
+    //When pressed will go back to the first Bar Chart
     if(mousePressed)
     {
       if(mouseX > 5 && mouseX < 40 && mouseY > 5 && mouseY < 20)
@@ -178,7 +185,7 @@ class DrawGraph
       }
     }    
   }
-
+  //Draws the wordle once a bar in a second bar chart was clicked
   void drawWordle(String[] counties, ArrayList<Float> countyTotals, int jGraph)
   {
     background(255);
@@ -191,32 +198,38 @@ class DrawGraph
     float ranWidth, ranHeight, textSize;
     float[] prevWidth = new float[32];
     float[] prevSize = new float[32];
+    float colour;
     for(i = 0; i < counties.length; i++)
     {
-      fill(random(255), random(255), random(255));
       textSize = (((countyTotals.get(jGraph + (25*i))+100)/5));
       textSize(textSize);
+      colour = map(textSize, 0, 100, 255, 0);
+      fill(colour, 0, 0);
       ranWidth = random(0, width-100);
       for(j = 0; j < i+1; j++)
       {
-        if(ranWidth >= prevWidth[j] && ranWidth <= prevWidth[j] + prevSize[j])
+        //Meant to check if any text has collided and gives a new value if it has
+        if(ranWidth >= prevWidth[j] && ranWidth <= prevWidth[j] + prevSize[j] || (ranWidth + textWidth(counties[i])) > width)
         {
-          ranWidth = random(0, width-200);
+          ranWidth = random(0, width-100);
           j--;
         }
       }
       prevWidth[i] = ranWidth;
       for(k = 0; k < counties.length; k++)
       {
+        //calculates the highest value of the totals for the given year
         if(countyTotals.get(jGraph + (25*k)) > highest)
         {
           highest = countyTotals.get(jGraph + (25*k));
         }
       } 
+      //Gives the text a y-axis position based on how many excavations took place in that county this year
       ranHeight = map(countyTotals.get(jGraph + (25*i)), 0, highest+((highest/100)*30), height, 0);
       prevSize[i] = textWidth(counties[i]); 
       text(counties[i], ranWidth, ranHeight);
     }
+    //Sets the Wordle variable to 1 so that the Axis will no longer be displayed
     wordle = 1;
   }
 }

@@ -29,6 +29,7 @@ class Totals
       {
         if(k > 24 && k < 825)
         {
+          //Reads in how many excavations took place in each county each year
           countyTotal = Float.parseFloat(values[j]);
           countyTotals.add(countyTotal); 
         }
@@ -36,6 +37,7 @@ class Totals
         float f = Float.parseFloat(values[j]);
         if(i == 33)
         {
+          //Calculates the year totals
           yearTotals[j] = f;
         }
       }  
@@ -48,6 +50,7 @@ class Totals
       {
         for(k = (i-1); k < (i-1) + 5; k++)
         {
+          //Calculates the total excavations per five years
           fiveYears = fiveYears + yearTotals[k];
         }
         fiveYearTotals[j] = fiveYears;

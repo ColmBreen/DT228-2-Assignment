@@ -31,6 +31,7 @@ void Totals()
 
 void draw()
 {
+  //Sisplays the start screen so long as the mouse has not been clicked yet
   if(menu == 0)
   {
     background(0);
@@ -52,6 +53,7 @@ void draw()
   }
   else
   {
+    //Resets rectMode and textAlign for rest of program
     textAlign(BASELINE);
     rectMode(CORNER);
     drawing.drawingBars(calculating.yearTotals, calculating.fiveYearTotals);
@@ -60,7 +62,7 @@ void draw()
 
 void mouseClicked()
 {
-  
+  //Checks which bar of the first graph has been clicked and passes that value to the DrawGraph class
   if(drawing.graph == 0 && menu != 0)
   {
     for(int i = 0; i < 5; i++)
@@ -74,7 +76,8 @@ void mouseClicked()
   }
   else if(menu != 0)
   {
-    for(int i = 0; i < 6; i++)
+    //Checks which bar in the second graph has been clicked and passes that info to the drawWordle method in the DrawGraph class
+    for(int i = 0; i < 5; i++)
     {
       if(drawing.graph == i+1)
       {
@@ -92,5 +95,6 @@ void mouseClicked()
       }
     }
   }
+  //Set the menu variable to one so that the menu will not be displayed from now on
   menu = 1;
 }
