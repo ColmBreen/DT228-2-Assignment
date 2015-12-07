@@ -3,16 +3,16 @@ class LoadData
   ArrayList<ArrayList<Float>> excavations;
   ArrayList<Float> v; 
   String[] lines;
-  
-  LoadData()
-  {
-    String[] counties = {"Antrim", "Armagh", "Carlow", "Cavan", "Clare", 
+  String[] counties = {"Antrim", "Armagh", "Carlow", "Cavan", "Clare", 
                 "Cork", "Derry", "Donegal", "Down", "Dublin", 
                 "Fermanagh", "Galway", "Kerry", "Kildare", "kilkenny", 
                 "Laois", "Leitrim", "Limerick", "Longford", "Louth", 
                 "Mayo", "Meath", "Monaghan", "Offaly", "Roscommon", 
                 "Sligo", "Tipperary", "Tyrone", "Waterford", "Westmeath", 
                 "Wexford", "Wicklow"};
+  
+  LoadData()
+  {
     excavations = new ArrayList<ArrayList<Float>>();
     v = new ArrayList<Float>(); 
     lines = loadStrings("Excavations.csv");
@@ -34,6 +34,5 @@ class LoadData
       // add the small list to the main one
       excavations.add(v);
     }
-    println(excavations.get(1));
   }
 }

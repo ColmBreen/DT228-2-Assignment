@@ -27,14 +27,18 @@ class Totals
       values = s.split(",");
       for(j = 0; j<values.length ; j++) 
       {
+        if(k > 24 && k < 825)
+        {
+          countyTotal = Float.parseFloat(values[j]);
+          countyTotals.add(countyTotal); 
+        }
+        k++;
         float f = Float.parseFloat(values[j]);
         if(i == 33)
         {
           yearTotals[j] = f;
         }
-        countyTotal = countyTotal + f;
       }  
-      countyTotals.add(countyTotal);
       i++;
     }
     j = 0;
