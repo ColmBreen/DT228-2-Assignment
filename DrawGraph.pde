@@ -73,6 +73,7 @@ class DrawGraph
 
   void drawingBars(float[] yearTotals, float[] fiveYearTotals)
   {
+    rectMode(CORNER);
     float scale = 0;
     stroke(0);
     if(graph == 0)
@@ -181,27 +182,38 @@ class DrawGraph
   void drawWordle(String[] counties, ArrayList<Float> countyTotals, int jGraph)
   {
     background(255);
-    int i, j;
+    fill(0);
+    textSize(25);
+    text(1990 + jGraph, (width/2) - 25, height/15);
+    rectMode(CENTER);
+    int i, j, k;
+    float highest = 0;
     float ranWidth, ranHeight, textSize;
     float[] prevWidth = new float[32];
-    float[] prevHeight = new float[32];
     float[] prevSize = new float[32];
     for(i = 0; i < counties.length; i++)
     {
-      fill(random(255), 0, 0);
+      fill(random(255), random(255), random(255));
       textSize = (((countyTotals.get(jGraph + (25*i))+100)/5));
       textSize(textSize);
-      ranWidth = random(0, width-200);
+      ranWidth = random(0, width-100);
       for(j = 0; j < i+1; j++)
       {
         if(ranWidth >= prevWidth[j] && ranWidth <= prevWidth[j] + prevSize[j])
         {
           ranWidth = random(0, width-200);
+          j--;
         }
       }
       prevWidth[i] = ranWidth;
-      ranHeight = map(countyTotals.get(jGraph + (25*i)), 0, 250, height, 0);
-      prevHeight[i] = ranHeight;
+      for(k = 0; k < counties.length; k++)
+      {
+        if(countyTotals.get(jGraph + (25*k)) > highest)
+        {
+          highest = countyTotals.get(jGraph + (25*k));
+        }
+      } 
+      ranHeight = map(countyTotals.get(jGraph + (25*i)), 0, highest+((highest/100)*30), height, 0);
       prevSize[i] = textWidth(counties[i]); 
       text(counties[i], ranWidth, ranHeight);
     }
