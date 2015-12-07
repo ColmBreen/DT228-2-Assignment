@@ -21,7 +21,7 @@ be clicked on to show a bar chart where each bar represents the individual years
 represented. I did not manage to create a 3-D version of these graphs as I had previously planned to.
 When any of the bars representing single years is clicked a wordle is displayed. This contains the names of
 all of the counties with the size of the text for each county set in relation to the number of excavations that
-took place there that year.
+took place there that year. I was und=fortunately unable to have this so that the words would not overlap.
 
 
 
