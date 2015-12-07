@@ -22,8 +22,6 @@ represented. I did not manage to create a 3-D version of these graphs as I had p
 When any of the bars representing single years is clicked a wordle is displayed. This contains the names of
 all of the counties with the size of the text for each county set in relation to the number of excavations that
 took place there that year. I was unfortunately unable to have this so that the words would not overlap.
-![alt tag](C:\Users\Colm\Desktop\College\YEAR 2\Programming\Assignment 1\AssignmentFirstGraph.png)
-
 
 
 
